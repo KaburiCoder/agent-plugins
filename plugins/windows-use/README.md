@@ -13,7 +13,7 @@ Windows 데스크톱 프로그램을 보고·읽고·조작하는 MCP 서버(std
 
 ```
 /plugin marketplace add KaburiCoder/agent-plugins
-/plugin install windows-use@kaburicoder
+/plugin install windows-use@agent-plugins
 ```
 
 ### 다른 MCP 클라이언트
