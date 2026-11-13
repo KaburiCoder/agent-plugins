@@ -25,11 +25,6 @@ const files = {
     get: (s) => JSON.parse(s).version,
     set: (s, v) => s.replace(/"version":\s*"[^"]+"/, `"version": "${v}"`),
   },
-  '.mcp.json': {
-    path: `plugins/${plugin}/.mcp.json`,
-    get: (s) => s.match(new RegExp(`"${pkg}@([^"]+)"`))?.[1],
-    set: (s, v) => s.replace(new RegExp(`"${pkg}@[^"]+"`), `"${pkg}@${v}"`),
-  },
   'package.json': {
     path: `npm/${pkg}/package.json`,
     get: (s) => JSON.parse(s).version,

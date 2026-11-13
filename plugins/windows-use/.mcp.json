@@ -1,8 +1,8 @@
 {
   "mcpServers": {
     "windows-use": {
-      "command": "cmd",
-      "args": ["/c", "npx", "-y", "windows-use-mcp@0.1.0"]
+      "command": "node",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/launch.js"]
     }
   }
 }
