@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "windows-use": {
+      "command": "cmd",
+      "args": ["/c", "npx", "-y", "windows-use-mcp@0.1.0"]
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "windows-use-mcp",
+  "version": "0.1.0",
+  "description": "MCP server (stdio) that sees, reads and drives Windows desktop programs: UI Automation, Win32 controls, screenshots, keyboard and mouse",
+  "license": "MIT",
+  "author": "KaburiCoder",
+  "homepage": "https://github.com/KaburiCoder/agent-plugins/tree/main/plugins/windows-use",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KaburiCoder/agent-plugins.git",
+    "directory": "npm/windows-use-mcp"
+  },
+  "bin": {
+    "windows-use-mcp": "bin/windows-use-mcp.js"
+  },
+  "files": [
+    "bin/"
+  ],
+  "os": ["win32"],
+  "cpu": ["x64", "arm64"],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": ["mcp", "mcp-server", "windows", "ui-automation", "desktop-automation", "screenshot"]
+}

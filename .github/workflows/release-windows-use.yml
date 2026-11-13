@@ -1,0 +1,47 @@
+# Push a tag like windows-use-v0.2.0 (after `node scripts/version.mjs windows-use --set 0.2.0`
+# is committed) to test, build and publish windows-use to npm and GitHub Releases.
+name: release windows-use
+
+on:
+  push:
+    tags: ['windows-use-v*']
+
+permissions:
+  contents: write  # GitHub release
+  id-token: write  # npm provenance
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Check versions match the tag
+        shell: bash
+        run: node scripts/version.mjs windows-use --expect "${GITHUB_REF_NAME#windows-use-v}"
+
+      - run: cargo test -p windows-use
+      - run: cargo build --release -p windows-use
+
+      - name: Put the exe in the npm package
+        shell: bash
+        run: cp target/release/windows-use.exe npm/windows-use-mcp/bin/
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+
+      - name: Publish to npm
+        working-directory: npm/windows-use-mcp
+        run: npm publish --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: GitHub release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" target/release/windows-use.exe --title "windows-use ${GITHUB_REF_NAME#windows-use-v}" --generate-notes

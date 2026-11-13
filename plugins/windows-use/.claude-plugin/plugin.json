@@ -1,0 +1,13 @@
+{
+  "name": "windows-use",
+  "displayName": "Windows Use",
+  "version": "0.1.0",
+  "description": "Windows 데스크톱 프로그램을 보고·읽고·조작하는 MCP 서버와 스킬 (UI Automation·Win32·스크린샷·입력)",
+  "author": {
+    "name": "KaburiCoder"
+  },
+  "homepage": "https://github.com/KaburiCoder/agent-plugins/tree/main/plugins/windows-use",
+  "repository": "https://github.com/KaburiCoder/agent-plugins",
+  "license": "MIT",
+  "keywords": ["windows", "desktop", "ui-automation", "screenshot", "mcp"]
+}
